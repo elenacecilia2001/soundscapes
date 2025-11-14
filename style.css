@@ -80,50 +80,44 @@ button {
 }
 
 button:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.377);
 }
 
 /* === MENU CENTRALE GLASS === */
-/* === MENU CENTRALE GLASS (uguale al popup) === */
 .menu {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-
   display: flex;
-  gap: 25px;
+  gap: 28px;
 
-  /* GLASS identico al popup */
+  /* Glass identico al popup */
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(35px) saturate(180%);
+  -webkit-backdrop-filter: blur(35px) saturate(180%);
 
-  padding: 14px 40px;
-  border-radius: 25px;
-
+  padding: 16px 42px;
+  border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
-
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
   z-index: 20;
 }
 
-/* Link del menu */
+/* Link menu */
 .menu a {
-  color: #222; /* scuro per maggiore leggibilità */
+  color: #070707cc; /* chiaro ma leggibile */
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
-
-  transition: 
-    text-shadow 0.25s ease,
-    opacity 0.25s ease;
+  font-size: 1.05rem;
+  transition: all 0.25s ease;
+  position: relative;
 }
 
-/* === HOVER: glow luminoso, NON cambia il colore del testo === */
+/* Hover delicato ma leggibile */
 .menu a:hover {
-  text-shadow: 
-      0 0 4px rgba(255, 255, 255, 0.8),
-      0 0 8px rgba(255, 255, 255, 0.6);
-  opacity: 1;
+  color: #c2c2c2cc; /* leggero incremento di luminosità */
+  text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.4),
+    0 0 6px rgba(255, 255, 255, 0.25);
 }
