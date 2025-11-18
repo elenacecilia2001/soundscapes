@@ -124,3 +124,81 @@ button:hover {
     0 0 2px rgba(255, 255, 255, 0.4),
     0 0 4px rgba(255, 255, 255, 0.25);
 }
+/* === STILE PER LE PAGINE DI CONTENUTO (Approfondimento, Ricerca, Contatti) === */
+
+/* Permette lo scroll nelle pagine di testo */
+body.scrollable {
+  overflow-y: auto; /* Abilita lo scorrimento verticale */
+  /* Sfondo per le pagine senza mappa: 
+     Puoi sostituire l'URL con un'immagine, o usare un gradiente come qui sotto */
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+  /* Se hai un'immagine di sfondo (es. screenshot della mappa sfocata):
+  background: url('tua-immagine-sfondo.jpg') no-repeat center center fixed; 
+  background-size: cover; */
+}
+
+/* Contenitore principale del testo (Stile Glass Coerente) */
+.page-container {
+  width: 90%;
+  max-width: 800px; /* Larghezza massima per leggibilità */
+  margin: 120px auto 60px auto; /* Spazio sopra per il menu fisso */
+  padding: 50px;
+  
+  /* Riprendo il tuo stile .popup-content */
+  background: rgba(255, 255, 255, 0.15); /* Leggermente più scuro per contrasto testo */
+  border-radius: 25px;
+  color: #f0f0f0; /* Testo chiaro per leggibilità su sfondo scuro */
+  
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Tipografia per i contenuti */
+.page-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.page-container h2 {
+  font-size: 1.8rem;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 10px;
+}
+
+.page-container p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #e0e0e0; /* Bianco sporco riposante per gli occhi */
+}
+
+.page-container ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.page-container li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* Link nel testo */
+.page-container a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.page-container a:hover {
+  color: #ccc;
+}
+
