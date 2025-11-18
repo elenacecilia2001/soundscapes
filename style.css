@@ -108,21 +108,22 @@ button:hover {
   z-index: 20;
 }
 
-/* Link menu */
+/* Link menu (AGGIORNATO) */
 .menu a {
   color: #000000; /* Testo nero per maggiore contrasto */
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem; /* Leggermente più piccolo */
+  font-size: 0.95rem; 
   transition: all 0.25s ease;
   position: relative;
   padding: 4px 6px;
+  
+  outline: none; 
 }
 
 /* Hover delicato e moderno */
 .menu a:hover {
-  color: #333333; /* Colore scuro leggermente diverso all'hover */
-  text-shadow: none; /* Rimuovi la text-shadow che era per sfondi scuri */
+  color: #333333; 
 }
 
 
@@ -263,6 +264,7 @@ iframe.soundcloud-player {
   border-radius: 10px; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
 }
+
 
 
 
