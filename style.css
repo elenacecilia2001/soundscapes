@@ -125,12 +125,7 @@ button:hover {
   text-shadow: none; /* Rimuovi la text-shadow che era per sfondi scuri */
 }
 
-/* Evidenzia la pagina corrente nel menu */
-.menu a.active {
-  color: #1a73e8; /* Un blu più moderno per l'attivo */
-  font-weight: 700;
-  border-bottom: 2px solid #1a73e8; /* Sottolineatura colorata */
-}
+
 
 /* === STILE PER LE PAGINE DI CONTENUTO (Approfondimento, Ricerca, Contatti) === */
 
@@ -268,5 +263,6 @@ iframe.soundcloud-player {
   border-radius: 10px; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
 }
+
 
 
