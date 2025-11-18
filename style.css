@@ -12,7 +12,8 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif; /* Nuovo font */
-  background: #000; /* Sfondo di default scuro */
+  /* Impostiamo un colore di fallback molto chiaro per evitare la banda nera */
+  background: #f7f7f7; 
 }
 
 /* === MAPPA FULLSCREEN (per index.html) === */
@@ -108,7 +109,7 @@ button:hover {
   z-index: 20;
 }
 
-/* Link menu (AGGIORNATO) */
+/* Link menu */
 .menu a {
   color: #000000; /* Testo nero per maggiore contrasto */
   text-decoration: none;
@@ -117,7 +118,6 @@ button:hover {
   transition: all 0.25s ease;
   position: relative;
   padding: 4px 6px;
-  
   outline: none; 
 }
 
@@ -127,16 +127,12 @@ button:hover {
 }
 
 
-
 /* === STILE PER LE PAGINE DI CONTENUTO (Approfondimento, Ricerca, Contatti) === */
 /* Permette lo scroll nelle pagine di testo */
 body.scrollable {
-  /* Rimuoviamo qui lo sfondo e il colore di fallback, 
-     lasciando il corpo principale senza un background diretto. */
+  /* Rimuoviamo qui lo sfondo, lasciando il colore di fallback in alto */
   overflow-y: auto;
   color: #333; 
-  /* Lo sfondo viene applicato all'elemento fittizio sottostante */
-  background: black; /* Rende la banda nera meno evidente, ma verrà coperta */
 }
 
 /* Elemento fittizio (pseudo-elemento) per contenere lo sfondo e applicare il filtro */
@@ -149,66 +145,62 @@ body.scrollable::before {
   height: 100%;
   z-index: -1; /* Manda lo sfondo dietro a tutti gli altri elementi (body, menu, pannello testo) */
   
-  /* Applica l'immagine*/
-  background-image: url('map-background.png'); 
+  /* Applica l'immagine (Usiamo 'mappa.jpg' come confermato) */
+  background-image: url('mappa.jpg'); 
   background-repeat: no-repeat;
   background-size: cover; 
   background-position: center center; 
   
   /* FILTRO DI SFOCATURA (Leggero Blur) */
-  filter: blur(5px); /* Puoi aumentare o diminuire il valore (es. 3px o 7px) */
+  filter: blur(5px); 
   -webkit-filter: blur(5px);
 }
 
-/* Assicurati che il contenitore del testo abbia uno sfondo opaco (già fatto con rgba) */
-.page-container {
-  /* ... (Il resto delle tue regole .page-container rimangono le stesse) ... */
-}
 
 /* Contenitore principale del testo (Stile Glass Coerente) */
 .page-container {
   width: 90%;
   max-width: 800px;
   margin: 120px auto 60px auto;
-  padding: 40px; /* Padding leggermente ridotto */
+  padding: 40px; 
   
   /* Stile Glass aggiornato per sfondo chiaro */
-  background: rgba(255, 255, 255, 0.8); /* Molto più chiaro e opaco */
-  border-radius: 20px; /* Bordi leggermente meno arrotondati */
-  color: #333; /* Colore testo scuro */
+  background: rgba(255, 255, 255, 0.8); 
+  border-radius: 20px; 
+  color: #333; 
   
-  backdrop-filter: blur(10px) saturate(180%); /* Meno blur */
+  backdrop-filter: blur(10px) saturate(180%); 
   -webkit-backdrop-filter: blur(10px) saturate(180%);
   
-  border: 1px solid rgba(255, 255, 255, 0.9); /* Bordo quasi bianco */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
+  border: 1px solid rgba(255, 255, 255, 0.9); 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); 
 }
 
 /* Tipografia per i contenuti */
 .page-container h1 {
-  font-size: 2.2rem; /* Leggermente più piccolo */
+  font-size: 2.2rem; 
   margin-bottom: 25px;
-  font-weight: 700; /* Più grassetto */
+  font-weight: 700; 
   text-align: center;
   letter-spacing: 0.5px;
   color: #1a1a1a;
 }
 
 .page-container h2 {
-  font-size: 1.5rem; /* Più piccolo */
+  font-size: 1.5rem; 
   margin-top: 35px;
-  margin-bottom: 12px; /* Margine inferiore ridotto */
-  border-bottom: none; /* Rimosso il bordo */
-  padding-bottom: 0; /* Rimosso il padding inferiore */
-  font-weight: 500; /* Peso medio */
+  margin-bottom: 12px; 
+  border-bottom: none; 
+  padding-bottom: 0; 
+  font-weight: 500; 
   color: #222;
 }
 
 .page-container p {
-  font-size: 1rem; /* Leggermente più piccolo */
-  line-height: 1.7; /* Interlinea leggermente ridotta */
+  font-size: 1rem; 
+  line-height: 1.7; 
   margin-bottom: 18px;
-  color: #333; /* Testo più scuro */
+  color: #333; 
 }
 
 .page-container ul {
@@ -224,14 +216,14 @@ body.scrollable::before {
 
 /* Link nel testo */
 .page-container a {
-  color: #1a73e8; /* Blu per i link */
+  color: #1a73e8; 
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
 .page-container a:hover {
-  color: #0d47a1; /* Blu più scuro all'hover */
+  color: #0d47a1; 
 }
 
 /* === GALLERIA IMMAGINI AFFIANCATE (CORREZIONE DEFINITIVA) === */
@@ -241,24 +233,21 @@ body.scrollable::before {
   display: flex; 
   
   /* 2. IMPOSTA IL DEFAULT A RIGA (affiancate) */
-  flex-direction: row; 
+  flex-direction: row !important; /* FORZA la visualizzazione a riga per desktop */
   
   gap: 20px; /* Spazio tra le immagini */
   margin: 30px 0;
   justify-content: center;
-  flex-wrap: wrap; /* Permette il ritorno a capo se lo spazio non basta */
+  flex-wrap: wrap; 
 }
 
 .gallery-row img {
-  /* 3. IMPOSTA LA LARGHEZZA SU DESKTOP: 
-     Le immagini crescono, si riducono e hanno una larghezza di base del 45%, 
-     permettendone due affiancate con lo spazio (gap) in mezzo. */
+  /* 3. IMPOSTA LA LARGHEZZA SU DESKTOP */
   flex: 1 1 45%; 
   height: auto;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  /* Imposta un max-width per evitare che un'immagine si allarghi troppo */
   max-width: 45%; 
 }
 
@@ -268,11 +257,10 @@ body.scrollable::before {
 @media (max-width: 768px) {
   .gallery-row {
     /* FORZA L'IMPILEAMENTO SOLO SU SCHERMI STRETTI */
-    flex-direction: column; 
+    flex-direction: column !important; /* FORZA la visualizzazione in colonna per mobile */
     align-items: center; 
   }
   .gallery-row img {
-    /* Su mobile, l'immagine può occupare quasi tutta la larghezza */
     max-width: 90%; 
   }
 }
@@ -288,7 +276,7 @@ iframe.soundcloud-player {
 }
 
 /* Stile per le immagini all'interno del contenitore delle pagine */
-.page-container img {
+.page-container > img { /* Selezioniamo solo immagini non nella galleria */
   max-width: 100%;
   height: auto;    
   display: block;  
@@ -296,8 +284,6 @@ iframe.soundcloud-player {
   border-radius: 10px; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Ombra più leggera */
 }
-
-
 
 
 
