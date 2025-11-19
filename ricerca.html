@@ -5,89 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soundscapes - Ricerca</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body class="scrollable">
 
-  <nav class="menu">
-    <!-- Navbar identica alla pagina precedente -->
-    <a href="index.html">Home</a>
-    <a href="approfondimento.html">Approfondimento</a>
-    <a href="ricerca.html">Ricerca</a>
-    <a href="contatti.html">Contatti</a>
-  </nav>
+<nav class="menu">
+  <a href="index.html">Home</a>
+  <a href="approfondimento.html">Approfondimento</a>
+  <a href="ricerca.html">Ricerca</a>
+  <a href="contatti.html">Contatti</a>
+</nav>
 
-  <div class="page-container">
-    
-    <h1>Il Percorso di Ricerca</h1>
-    
-    <p>
-      Ciò che segue è il percorso di ricerca che ha accompagnato la mia esplorazione sonora.
-      Incontrare parole, gesti e intuizioni di chi, prima di me, aveva già ascoltato e pensato il paesaggio sonoro è stato come trovare tracce luminose lungo il cammino: indispensabili per non smarrirsi, per continuare a cercare.
-    </p>
-    
-    <p>
-      Di seguito puoi consultare il documento che raccoglie le principali riflessioni teoriche e le fonti d'ispirazione relative a questo progetto, dal concetto di Soundscapes alla metodologia di registrazione.
-    </p>
+<div class="page-container">
 
-       <div class="pdf-viewer-container">
-  
-  <!-- SLIDER ZOOM -->
-  <div class="zoom-controls">
-    <label for="zoomSlider">Zoom: </label>
-    <input type="range" id="zoomSlider" min="50" max="200" value="100">
-  </div>
+  <h1>Il Percorso di Ricerca</h1>
 
-  <!-- PDF con wrapper per permettere lo zoom -->
-  <div class="pdf-wrapper" id="pdfWrapper">
-    <iframe 
-      src="Ascoltando una Barriera di suoni.pdf#toolbar=0&navpanes=0" 
-      style="width:100%; height:700px;" 
-      frameborder="0">
-    </iframe>
-  </div>
+  <p> … </p>
+
+  <button onclick="openPDF()" 
+  style="padding:10px 20px; background:#4b61d1; color:white; border-radius:10px; border:none; cursor:pointer;">
+    Apri il PDF a tutto schermo
+  </button>
 
 </div>
 
+<!-- OVERLAY PDF -->
+<div class="pdf-overlay" id="pdfOverlay">
+  <div class="pdf-close-btn" onclick="closePDF()">✕</div>
+  <iframe src=""></iframe>
+</div>
 
-    <!-- 
-      === LINK DI DOWNLOAD ===
-      'download' forza il browser a scaricare il file invece di aprirlo
-    -->
-    <p style="text-align: center; margin-top: 30px;">
-      <a 
-        href="Ascoltando una Barriera di suoni.pdf" 
-        download="Ascoltando una Barriera di suoni.pdf"
-        style="
-          display: inline-block; 
-          padding: 10px 20px; 
-          background-color: #4b61d1; 
-          color: white; 
-          text-decoration: none; 
-          border-radius: 8px;
-          font-weight: 500;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-          transition: background-color 0.2s ease;
-        "
-      >
-        Scarica il PDF
-      </a>
-    </p>
-    
-  </div>
 <script>
-  const slider = document.getElementById('zoomSlider');
-  const wrapper = document.getElementById('pdfWrapper');
+function openPDF() {
+  const overlay = document.getElementById("pdfOverlay");
+  overlay.style.display = "block";
+  overlay.querySelector("iframe").src = "Ascoltando una Barriera di suoni.pdf#toolbar=1";
+}
 
-  slider.addEventListener('input', () => {
-    const scale = slider.value / 100;
-    wrapper.style.transform = `scale(${scale})`;
-    wrapper.style.height = `${700 * scale}px`;
-  });
+function closePDF() {
+  const overlay = document.getElementById("pdfOverlay");
+  overlay.style.display = "none";
+  overlay.querySelector("iframe").src = "";
+}
 </script>
 
 </body>
-
 </html>
+
+
 
 
