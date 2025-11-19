@@ -5,7 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soundscapes - Ricerca</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- PDF.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.js";
+  </script>
+
+  <style>
+    /* VISUALIZZATORE PDF */
+    #pdf-viewer-box {
+      width: 100%;
+      height: 80vh;
+      background: #eee;
+      border-radius: 15px;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #pdf-canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+
+    #pdf-controls {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+    }
+
+    .pdf-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 22px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.85);
+      cursor: pointer;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
+
 <body class="scrollable">
 
 <nav class="menu">
@@ -21,30 +70,58 @@
 
   <p> … </p>
 
-  <button onclick="openPDF()" 
-  style="padding:10px 20px; background:#4b61d1; color:white; border-radius:10px; border:none; cursor:pointer;">
-    Apri il PDF a tutto schermo
-  </button>
+  <!-- PDF VIEWER -->
+  <div id="pdf-viewer-box">
+    <div id="pdf-controls">
+      <button class="pdf-btn" onclick="zoomOut()">−</button>
+      <button class="pdf-btn" onclick="zoomIn()">+</button>
+    </div>
 
-</div>
+    <canvas id="pdf-canvas"></canvas>
+  </div>
 
-<!-- OVERLAY PDF -->
-<div class="pdf-overlay" id="pdfOverlay">
-  <div class="pdf-close-btn" onclick="closePDF()">✕</div>
-  <iframe src=""></iframe>
 </div>
 
 <script>
-function openPDF() {
-  const overlay = document.getElementById("pdfOverlay");
-  overlay.style.display = "block";
-  overlay.querySelector("iframe").src = "Ascoltando una Barriera di suoni.pdf#toolbar=1";
+let pdfDoc = null;
+let currentPage = 1;
+let zoom = 1.0;  // zoom iniziale
+
+// CARICA IL PDF
+pdfjsLib.getDocument("Ascoltando una Barriera di suoni.pdf").promise.then(pdf => {
+  pdfDoc = pdf;
+  renderPage();
+});
+
+// RENDER PAGINA
+function renderPage() {
+  pdfDoc.getPage(currentPage).then(page => {
+    const viewport = page.getViewport({ scale: zoom });
+
+    const canvas = document.getElementById("pdf-canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    page.render({
+      canvasContext: ctx,
+      viewport: viewport
+    });
+  });
 }
 
-function closePDF() {
-  const overlay = document.getElementById("pdfOverlay");
-  overlay.style.display = "none";
-  overlay.querySelector("iframe").src = "";
+// ZOOM CONTROLLATO
+function zoomIn() {
+  zoom += 0.1;
+  if (zoom > 2.5) zoom = 2.5; // massimo
+  renderPage();
+}
+
+function zoomOut() {
+  zoom -= 0.1;
+  if (zoom < 0.4) zoom = 0.4; // minimo
+  renderPage();
 }
 </script>
 
