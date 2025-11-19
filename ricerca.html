@@ -15,43 +15,39 @@
 
   <style>
     /* VISUALIZZATORE PDF */
-    #pdf-viewer-box {
-      width: 100%;
-      height: 80vh;
-      background: #eee;
-      border-radius: 15px;
-      padding: 10px;
-      position: relative;
-      overflow: hidden;
-    }
+    .pdf-viewer-container iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+  border-radius: 15px; /* come le immagini */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
-    #pdf-canvas {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: auto;
-    }
+.pdf-zoom-btn {
+  position: absolute;
+  top: 20px;
+  right: 70px; /* destra della X chiudi */
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.5);
+  font-size: 1.5rem;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+}
 
-    #pdf-controls {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      z-index: 20;
-      display: flex;
-      gap: 10px;
-    }
+.pdf-zoom-btn:hover {
+  background: rgba(255,255,255,0.35);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
 
-    .pdf-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 22px;
-      border: none;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.85);
-      cursor: pointer;
-      font-weight: bold;
-      backdrop-filter: blur(10px);
-    }
   </style>
 </head>
 
@@ -129,6 +125,7 @@ function zoomOut() {
 
 </body>
 </html>
+
 
 
 
