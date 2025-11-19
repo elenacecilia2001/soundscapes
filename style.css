@@ -12,10 +12,13 @@ html, body {
   width: 100%;
   height: 100%;
   font-family: 'Inter', sans-serif;
-  background-color: #f7f7f7; 
+  background-color: #f7f7f7;
+  overflow-x: hidden;
 }
 
-/* === MAPPA FULLSCREEN (HOMEPAGE) === */
+/* =========================================================
+   HOME: MAPPA FULLSCREEN
+   ========================================================= */
 .map-frame {
   position: absolute;
   top: 0;
@@ -23,21 +26,20 @@ html, body {
   width: 100% !important;
   height: 100% !important;
   border: none;
-  z-index: 1 !important;
+  z-index: 1;
 }
 
-/* FIX: nessun elemento deve sovrapporsi alla mappa */
+/* Nessun overflow sulla homepage */
 body:not(.scrollable) {
   overflow: hidden !important;
 }
 
-/* === POPUP INTRODUTTIVO === */
+/* =========================================================
+   POPUP INTRODUTTIVO
+   ========================================================= */
 .popup {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.15);
   display: flex;
@@ -69,7 +71,9 @@ button {
   font-weight: 500;
 }
 
-/* === NAVBAR === */
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 .menu {
   position: fixed;
   top: 45px;
@@ -77,9 +81,9 @@ button {
   transform: translateX(-50%);
   display: flex;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(15px) saturate(180%);
-  padding: 8px 30px;
+  padding: 10px 35px;
   border-radius: 25px;
   z-index: 20;
 }
@@ -91,37 +95,58 @@ button {
   font-size: 0.95rem;
 }
 
-/* === SFONDO PAGINE TESTUALI === */
+/* =========================================================
+   PAGINE SCORRIBILI
+   ========================================================= */
 body.scrollable {
   overflow-y: auto;
-  background-color: transparent;
+  background: transparent;
 }
 
 body.scrollable::before {
   content: '';
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-image: url('map-background.png'); 
+  inset: 0;
+  background-image: url('map-background.png');
   background-size: cover;
   background-position: center;
   filter: blur(5px);
   z-index: -2;
 }
 
-/* === CONTENT BOX === */
+/* =========================================================
+   PAGE CONTAINER (BOX CENTRALE)
+   ========================================================= */
 .page-container {
   width: 90%;
   max-width: 800px;
   margin: 120px auto 60px auto;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20px; 
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.9);
+  overflow: visible !important;
 }
 
-/* === TITOLI (STILE APPLE) === */
+/* =========================================================
+   TESTI — FIX PARAGRAFI CHE DIVENTANO “...”
+   ========================================================= */
+.page-container *,
+.page-container p,
+.page-container h1,
+.page-container h2,
+.page-container div,
+.page-container section {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  max-height: none !important;
+}
+
+/* =========================================================
+   TITOLI STILE APPLE
+   ========================================================= */
 .page-container h1 {
   font-size: 2.4rem;
   font-weight: 800;
@@ -138,20 +163,23 @@ body.scrollable::before {
   margin-bottom: 15px;
 }
 
-/* === TESTO === */
+/* =========================================================
+   PARAGRAFI
+   ========================================================= */
 .page-container p {
   font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 18px;
 }
 
-/* === GALLERIA == */
+/* =========================================================
+   IMMAGINI E GALLERIE
+   ========================================================= */
 .gallery-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin: 35px 0;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .gallery-row img {
@@ -167,7 +195,6 @@ body.scrollable::before {
   }
 }
 
-/* === SIMPLY SINGLE IMAGES === */
 .page-container > img {
   max-width: 100%;
   margin: 30px auto;
@@ -175,11 +202,23 @@ body.scrollable::before {
   border-radius: 10px;
 }
 
-/* === PDF FULLSCREEN OVERLAY === */
+/* =========================================================
+   SOUNDCLOUD PLAYER (FIX)
+   ========================================================= */
+.soundcloud-player {
+  width: 100% !important;
+  height: 200px !important;
+  border: none;
+  display: block;
+  margin: 20px 0;
+}
+
+/* =========================================================
+   PDF OVERLAY (per fullscreen)
+   ========================================================= */
 .pdf-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.85);
@@ -202,10 +241,6 @@ body.scrollable::before {
   cursor: pointer;
   z-index: 10000;
 }
-
-
-
-
 
 
 
