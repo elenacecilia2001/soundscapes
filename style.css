@@ -193,7 +193,7 @@ body.scrollable::before {
 }
 
 /* =========================================================
-   IMMAGINI E GALLERIE
+   IMMAGINI E GALLERIE (con hover elegante)
    ========================================================= */
 .gallery-row {
   display: flex;
@@ -205,10 +205,16 @@ body.scrollable::before {
 .gallery-row img,
 .page-container > img {
   width: calc(50% - 10px);
-  border-radius: 12px; /* leggermente arrotondate */
+  border-radius: 12px;
   object-fit: cover;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: border-radius 0.2s;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-radius 0.2s ease;
+}
+
+.gallery-row img:hover,
+.page-container > img:hover {
+  transform: scale(1.025); /* leggero zoom morbido */
+  box-shadow: 0 6px 22px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 768px) {
@@ -217,6 +223,7 @@ body.scrollable::before {
     width: 100%;
   }
 }
+
 
 /* =========================================================
    SOUNDCLOUD PLAYER
@@ -239,4 +246,5 @@ body.scrollable::before {
   border: none; /* spigoli netti */
   display: block;
 }
+
 
