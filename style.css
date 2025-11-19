@@ -61,14 +61,15 @@ body:not(.scrollable) {
 }
 
 .popup-content h2 {
-  margin-bottom: 35px; /* respiro verticale maggiore */
+  margin-bottom: 35px;
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 400; /* leggero */
+  text-align: center;
 }
 
 .popup-content p {
-  margin-bottom: 22px; /* spazio tra paragrafi */
-  line-height: 1.8; /* più respiro verticale */
+  margin-bottom: 22px;
+  line-height: 1.8;
   font-size: 1.05rem;
 }
 
@@ -135,7 +136,7 @@ body.scrollable::before {
    ========================================================= */
 .page-container {
   width: 90%;
-  max-width: 800px;
+  max-width: 800px; /* default, sarà ampliato in ricerca.html */
   margin: 120px auto 60px auto;
   padding: 40px;
   background: rgba(255, 255, 255, 0.85);
@@ -166,8 +167,9 @@ body.scrollable::before {
    ========================================================= */
 .page-container h1 {
   font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 30px; /* più spazio sotto titolo */
+  font-weight: 400; /* leggero */
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .page-container h2 {
@@ -175,7 +177,7 @@ body.scrollable::before {
   font-weight: 500;
   margin-top: 35px;
   margin-bottom: 20px;
-  text-align: right; /* sottotitoli a destra */
+  text-align: right; /* allineato a destra */
 }
 
 /* =========================================================
@@ -183,7 +185,7 @@ body.scrollable::before {
    ========================================================= */
 .page-container p {
   font-size: 1rem;
-  line-height: 1.8; /* maggiore spazio verticale */
+  line-height: 1.8;
   margin-bottom: 18px;
 }
 
@@ -200,7 +202,7 @@ body.scrollable::before {
 .gallery-row img,
 .page-container > img {
   width: calc(50% - 10px);
-  border-radius: 15px; /* leggermente arrotondate solo qui */
+  border-radius: 20px; /* leggermente arrotondate */
   object-fit: cover;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -224,7 +226,7 @@ body.scrollable::before {
 }
 
 /* =========================================================
-   PDF VIEWER (nessun arrotondamento, zoom rimosso)
+   PDF VIEWER
    ========================================================= */
 .pdf-viewer-container iframe {
   width: 100%;
