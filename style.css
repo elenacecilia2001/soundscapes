@@ -203,7 +203,7 @@ body.scrollable::before {
 
 .gallery-row img {
   width: calc(50% - 10px);
-  border-radius: 15px;
+  border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -245,11 +245,14 @@ body.scrollable::before {
   z-index: 9999;
 }
 
-.pdf-overlay iframe {
+.pdf-viewer-container iframe {
   width: 100%;
-  height: 100%;
+  height: 700px;
   border: none;
+  border-radius: 15px; /* come le immagini */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 
 .pdf-close-btn {
   position: absolute;
@@ -260,6 +263,7 @@ body.scrollable::before {
   cursor: pointer;
   z-index: 10000;
 }
+
 
 
 
