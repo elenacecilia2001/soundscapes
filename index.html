@@ -4,23 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loading...</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="loading-wrapper"></div>
+<iframe
+  src="https://umap.openstreetmap.fr/it/map/mappa-sonora_1302604"
+  frameborder="0"
+  allowfullscreen
+  class="map-frame">
+</iframe>
 
 <div class="loading-logo">
   <img src="logo.svg" alt="Logo">
 </div>
 
 <script>
-  /* CAMBIO PAGINA DOPO 8 SECONDI */
   setTimeout(() => {
-    window.location.href = "index.html";
-  }, 8000);
+    window.location.href = "home.html"; 
+  }, 10000);
 </script>
 
 </body>
 </html>
-
