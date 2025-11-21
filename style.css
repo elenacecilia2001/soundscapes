@@ -15,7 +15,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* --- MAPPA DI SFONDO (HOME & INDEX - IFRAME) --- */
+/* --- MAPPA DI SFONDO INTERATTIVA (HOME & INDEX) --- */
 .map-frame {
   position: absolute;
   top: 0;
@@ -23,9 +23,11 @@ html, body {
   width: 100% !important;
   height: 100% !important;
   border: none;
-  z-index: -1;
+  /* CORRETTO: z-index positivo per poter cliccare e muovere la mappa */
+  z-index: 1; 
 }
 
+/* Impedisce lo scroll del body nella home per non interferire con la mappa */
 body:not(.scrollable) {
   overflow: hidden !important;
 }
@@ -36,7 +38,8 @@ body:not(.scrollable) {
   inset: 0;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.15);
-  z-index: 5;
+  /* Sta sopra la mappa (1) ma sotto il logo (10) */
+  z-index: 5; 
 }
 
 .loading-logo {
@@ -44,7 +47,8 @@ body:not(.scrollable) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
+  /* Sta sopra l'overlay */
+  z-index: 10; 
   width: 600px;
   max-width: 90%;
 }
@@ -65,7 +69,8 @@ body:not(.scrollable) {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 30;
+  /* Il popup deve stare sopra TUTTO */
+  z-index: 30; 
   padding: 20px;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
@@ -100,9 +105,9 @@ body:not(.scrollable) {
   display: block;
 }
 
-/* MODIFICA QUI: Testo del popup centrato */
+/* Testo popup centrato come richiesto */
 .popup-content p {
-  text-align: center !important; /* CENTRATO */
+  text-align: center !important;
   margin-bottom: 20px;
   line-height: 1.7;
   font-size: 0.95rem;
@@ -153,7 +158,8 @@ body:not(.scrollable) {
   backdrop-filter: blur(15px) saturate(180%);
   padding: 10px 35px;
   border-radius: 25px;
-  z-index: 20;
+  /* Menu sopra la mappa (1) e sotto il popup (30) */
+  z-index: 20; 
   white-space: nowrap;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
@@ -188,11 +194,11 @@ body:not(.scrollable) {
   }
 }
 
-/* --- PAGINE INTERNE (SFONDO FISSO) --- */
-
+/* --- PAGINE INTERNE (SFONDO FISSO IMMAGINE) --- */
+/* Solo le pagine interne hanno la classe .scrollable */
 body.scrollable {
   overflow-y: auto;
-  background-image: url('mappa.png');
+  background-image: url('mappa.png'); /* Qui usa l'immagine fissa */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -241,7 +247,7 @@ body.scrollable::before {
   color: #111;
 }
 
-/* Nelle pagine interne il testo rimane a SINISTRA */
+/* Testo pagine interne: a SINISTRA */
 .page-container p {
   font-size: 0.92rem;
   font-weight: 300;
@@ -363,6 +369,5 @@ body.scrollable::before {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   border-color: #fff;
 }
-
 
 
